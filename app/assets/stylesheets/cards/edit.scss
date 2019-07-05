@@ -1,0 +1,22 @@
+// Place all the styles related to the card controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.cardeditPage{
+  height:calc(100vh - 60px);
+  background-image:url(white-wood.jpg);
+  display:flex;
+  justify-content:center; 
+  .cardeditForm{
+    width:500px;
+    height: 420px;
+    padding:20px;
+    background-color: white;
+    margin-top:20px;
+    border-radius:7px;
+    border:solid 2px ;
+    border-color: dimgray;
+  }
+}

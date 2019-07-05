@@ -1,0 +1,21 @@
+  <div class="container">
+    <div class="cardContents">
+      <div class="card_title">
+        <div>タイトル</div>
+        <h2><%= @card.title %></h2>
+      </div>
+      <div class="card_memo">
+        <div>メモ</div>
+        <div><%= @card.memo %></div>
+      </div>
+      <div class="card_listStatus">
+        <div>リスト名</div>
+        <div><%= @card.list.title %></div>
+      </div>
+      <div class="card_btnArea">
+        <%= link_to '編集する', edit_list_card_path(@card.list, @card), class: "btn btn-primary" %>
+         <%= link_to '削除をする', list_card_path(@card.list, @card), class: "text-danger btn btn-primary", method: :delete, data: { confirm: "このカードを削除して大丈夫ですか?",title:"#{@card.title}" } %>
+      </div>
+    </div>
+  </div>
+

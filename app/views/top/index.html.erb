@@ -1,0 +1,72 @@
+<div class="topPage">
+  <div class="listWrapper">
+    <% @lists.each do |list|%>
+      <div class="list">
+        <div class="list_header">
+          <h2 class="list_header_title">
+            <%=list.title%>
+          </h2>
+          <div class="list_header_action">
+            <%= link_to(content_tag(:i, '', class: 'fas fa-pen'), edit_list_path(list)) %>
+             <%= link_to (content_tag(:i, '', class: 'fas fa-trash')), "/list/#{list.id}", method: :delete, data: { confirm: "#{list.title}を削除して大丈夫ですか?" ,cancel: 'やめる',
+              commit: '削除する',title:"#{list.title}"} %>
+          </div>
+        </div>
+        <div class="cardWrapper" data-list-id="#{list.id}">
+          <% list.cards.each do |card| %>
+            <div class="card">
+              <div class="card_title">
+                <div class="card_title_header">
+                  <p><%="#{card.title}"%> </p>
+                  <div class="card_title_header-hidden">
+                    <%= link_to(content_tag(:i, '', class: 'fas fa-pen'),edit_list_card_path(list, card)) %>
+                    <%= link_to (content_tag(:i, '', class: 'fas fa-trash')), "/list/#{list.id}/card/#{card.id}", method: :delete, data: { confirm: "#{card.title}を削除して大丈夫ですか?" ,cancel: 'やめる',
+                      commit: '削除する',title:"#{card.title}"} %>
+                  </div>
+                </div>
+                  <%if card.memo.present?%>
+                  <div class="card_memo">
+                    <div class="card_memo_title"><i class="fas fa-bars"></i> read more...</div>
+                    <div class="card_memo-hidden">
+                    <p>詳細：<%=card.memo%></p>
+                    </div>
+                  </div>
+                  <% end %>
+              </div>
+            </div>
+          <%end%>
+            <div class="add_card">
+              <i class="far fa-plus-square"></i>
+              <button class="add_card_link">さらにカードを追加</button>
+            </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+
+<%# modal-window card_new %>
+<div id="modal-overlay">
+<div id="modal-content">
+	<div class="cardnewPgae">
+  <div class='container'>
+    <h2>カードの追加</h2>
+    <%= form_with model: @card, url: { action: :create }, class:'cardnewForm'  do |f| %>
+       <%=f.label :list%>
+       <%= f.select :list_id, @lists.map{ |l| [l.title, l.id] },{}, { class: 'form-control' } %>
+      <div class="cardnewForm_title">
+        <%= f.label :title %>
+        <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "カード名" %>
+      </div>
+      <div class="cardnewForm_memo">
+        <%= f.label :memo %>
+        <%= f.text_area :memo, autofocus: true, class: "form-control", placeholder: "詳細" %>
+      <div class="text-center" id="card_create"><%= f.submit "作成する", class: "submitBtn" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+	<p><a id="modal-close" class="button-link">閉じる</a></p>
+</div>
+</div>
