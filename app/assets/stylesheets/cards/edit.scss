@@ -6,7 +6,7 @@
 
 .cardeditPage{
   height:calc(100vh - 60px);
-  background-image:url(white-wood.jpg);
+  background-image: image-url("white-wood.jpg");
   display:flex;
   justify-content:center; 
   .cardeditForm{

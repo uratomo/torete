@@ -10,7 +10,7 @@
 .topPage {
   min-height: 93vh;
   padding-top: 30px;
-  background-image:url(white-wood.jpg);
+  background-image: image-url("white-wood.jpg");
   overflow-x: scroll;
   .listWrapper {
     display: flex;
