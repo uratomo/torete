@@ -1,6 +1,5 @@
 # README
-
-(https://user-images.githubusercontent.com/51257200/62679885-cdf22980-b9f0-11e9-87f7-9a89ec8e5a7f.jpg)
+![torete](https://user-images.githubusercontent.com/51257200/62679885-cdf22980-b9f0-11e9-87f7-9a89ec8e5a7f.jpg)
 
 ## はじめに
 
