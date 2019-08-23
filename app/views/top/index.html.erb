@@ -12,7 +12,7 @@
               commit: '削除する',title:"#{list.title}"} %>
           </div>
         </div>
-        <div class="cardWrapper" data-list-id=<%="#{list.id}"%>>
+        <div class="cardWrapper" >
           <% list.cards.each do |card| %>
             <div class="card">
               <div class="card_title">
@@ -35,7 +35,7 @@
               </div>
             </div>
           <%end%>
-            <div class="add_card">
+            <div class="add_card" data-list-id=<%="#{list.id}"%>>
               <i class="far fa-plus-square"></i>
               <button class="add_card_link">さらにカードを追加</button>
             </div>
@@ -46,27 +46,5 @@
 </div>
 
 
-
-<div id="modal-overlay">
-  <div id="modal-content">
-    <div class="cardnewPgae">
-      <div class='container'>
-        <h2>カードの追加</h2>
-          <%= form_with model: @card, url: { action: :create }, class:'cardnewForm'  do |f| %>
-            <%=f.label :list%>
-            <%= f.select :list_id, @lists.map{ |l| [l.title, l.id] },{}, { class: 'form-control' } %>
-            <div class="cardnewForm_title">
-            <%= f.label :title %>
-            <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "カード名" %>
-      </div>
-        <div class="cardnewForm_memo">
-          <%= f.label :memo %>
-          <%= f.text_area :memo, autofocus: true, class: "form-control", placeholder: "詳細" %>
-        <div class="text-center" id="card_create"><%= f.submit "作成する", class: "submitBtn" %></div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-    <p><a id="modal-close" class="button-link">閉じる</a></p>
-  </div>
+ <div id ="modal">
 </div>

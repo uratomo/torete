@@ -1,6 +1,18 @@
 class CardController < ApplicationController
   before_action :set_card,only:[:edit,:update,:destroy]
 
+  def new
+    @card = Card.new(list_id:params[:listId])
+    respond_to do |format|
+      format.html { redirect_to :root }
+      format.json { render json: @card}
+    end
+  end
+
+  def create
+    
+  end
+
   def edit
     @lists = List.where(user:current_user)
   end
