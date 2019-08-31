@@ -12,7 +12,7 @@
               commit: '削除する',title:"#{list.title}"} %>
           </div>
         </div>
-        <div class="cardWrapper" >
+        <div class="cardWrapper" data-list-id=<%="#{list.id}"%>>
           <% list.cards.each do |card| %>
             <div class="card">
               <div class="card_title">
@@ -35,7 +35,7 @@
               </div>
             </div>
           <%end%>
-            <div class="add_card" data-list-id=<%="#{list.id}"%>>
+            <div class="add_card" >
               <i class="far fa-plus-square"></i>
               <button class="add_card_link">さらにカードを追加</button>
             </div>
