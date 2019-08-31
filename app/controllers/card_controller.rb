@@ -10,7 +10,14 @@ class CardController < ApplicationController
   end
 
   def create
-
+    binding.pry
+    @card = Card.new(title:params[:card],list_id:params[:list_id])
+    if  @card.save
+      respond_to do |format|
+        format.html { redirect_to :root }
+        format.json { render json: @card}
+      end
+    end
   end
 
   def edit

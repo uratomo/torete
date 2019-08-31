@@ -29,11 +29,11 @@ $(document).on("turbolinks:load", function() {
   });
 
   // modal_card_new
-  function buildForm(){
+  function buildForm(card){
     var html =`
     <div class="card">
     <div class="card_title">
-      <div class="card_title_header">
+      <div class="card_title_header" data-list-id=${card.list_id}>
         <input type="text" placeholder="テキストを入力してください" class="write_text">
         </div>
     `
@@ -54,7 +54,7 @@ $(document).on("turbolinks:load", function() {
     })
 
     .done(function(card){
-      var html =buildForm()
+      var html =buildForm(card)
       $(this).parent().parent().append(html)
       
     })
@@ -67,8 +67,7 @@ $(document).on("turbolinks:load", function() {
 $(document).on("change",".write_text",function(e){
   e.preventDefault
   // var formData= new FormData($(this).val());
-  list_id = $(this).children("#list").val();
-  console.log($(this).
+  list_id = $(this).parent().data("list-id");
 
   $.ajax({
     type: "POST",
@@ -79,9 +78,12 @@ $(document).on("change",".write_text",function(e){
     dataType:"JSON"
   })
   .done(function(){
-    console.log(2222)
+    alert("通信に成功しました")
 
 
+  })
+  .fail(function(){
+    alert("保存に失敗しました。")
   })
 })
 
