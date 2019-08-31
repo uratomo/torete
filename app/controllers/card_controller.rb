@@ -2,7 +2,7 @@ class CardController < ApplicationController
   before_action :set_card,only:[:edit,:update,:destroy]
 
   def new
-    @card = Card.new(list_id:params[:listId])
+    @card = Card.new(list_id:params[:list_id])
     respond_to do |format|
       format.html { redirect_to :root }
       format.json { render json: @card}
@@ -10,7 +10,7 @@ class CardController < ApplicationController
   end
 
   def create
-    
+
   end
 
   def edit

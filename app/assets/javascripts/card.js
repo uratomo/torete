@@ -34,14 +34,14 @@ $(document).on("turbolinks:load", function() {
     <div id="modal-overlay">
     <div id="modal-content">
       <form class="cardNew">
-        <input type="hidden" name="list_id" value="${card.list_id}">
+        <input type="hidden" name="listId" value="${card.list_id}" id="list">
         <div class='container'>
           <h2>カードの追加</h2>
         </div>
         <div class="cardnewForm_memo">
         <label for="memo">memo</label>
           <input type="text" name="memo", autofocus=true, class="form-control", placeholder="詳細" >
-          <input type="submit" , class="submitBtn">作成する</<submit>
+          <input type="submit" class="submitBtn"  value="作成する"></<submit>
         </div>
       </form>
       <p><a id="modal-close" class="button-link">閉じる</a></p>
@@ -56,7 +56,7 @@ $(document).on("turbolinks:load", function() {
 
 
   $(".add_card_link").on("click", function() {
-    var list_id = $(this).parent().data();
+    var list_id = $(this).parent().data("list-id");
     $.ajax({
       type: "GET",
       url: ` /list/${list_id}/card/new`,
@@ -73,16 +73,22 @@ $(document).on("turbolinks:load", function() {
 
     })
   });
-$(document).on(submit,".submitBtn",function(){
-  
+
+  // create
+$(document).on("submit",".cardNew",function(e){
+  e.preventDefault
+  var formData= new FormData($(this).get(0));
+  list_id = $(this).children("#list").val();
+
   $.ajax({
     type: "POST",
     url:`/list/${list_id}/card`,
-    data:"",
+    data:formData,
     dataType:"JSON"
   })
-
   .done(function(){
+    console.log(2222)
+
 
   })
 })
