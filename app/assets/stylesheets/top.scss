@@ -20,7 +20,7 @@
       position: relative;
       background: #e2e4e6;
       padding: 10px;
-      margin-left: 20px;
+      margin-left: 10px;
       width: 300px;
       border-radius:7px;
       &:last-child {
@@ -61,6 +61,17 @@
             &_header{
               display:flex;
               justify-content:space-between;
+              .write_text{
+                width:100%;
+                border:none;
+                overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+              }
               &-hidden{
                 .fa-pen, .fa-trash {
                   font-size: 14px;
