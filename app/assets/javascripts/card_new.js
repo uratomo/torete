@@ -55,7 +55,6 @@ $(document).on("change",".write_text",function(e){
 e.preventDefault
 // var formData= new FormData($(this).val());
 list_id = $(this).parent().data("list-id");
-
 $.ajax({
   type: "POST",
   url:`/list/${list_id}/card`,
@@ -64,6 +63,7 @@ $.ajax({
   },
   dataType:"JSON"
 })
+
 .done(function(card){
   $("#new_card").remove()
   var html = buildCard(card)
